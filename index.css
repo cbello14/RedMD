@@ -1,7 +1,7 @@
 .test {
   text-align: center;
 }
-
+/* base header */
 .header {
   position: fixed;
   top: 0;
@@ -17,10 +17,21 @@
   padding: 10px;
 }
 
-.red {
+/* reverses header on hover*/
+.header:hover {
+  background-color: white;
   color: crimson;
+  transition: 1s;
 }
 
+/*returns header to normal when not hovering*/
+.header:not(:hover) {
+  background-color: crimson;
+  color: white;
+  transition: 1s;
+}
+
+/*gives padding and space for header to main section*/
 .main {
   padding: 16px;
   margin-top: 100px;
