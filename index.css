@@ -1,6 +1,3 @@
-.test {
-  text-align: center;
-}
 /* base header */
 .header {
   position: fixed;
@@ -8,18 +5,23 @@
   width: 100%;
   height: 10%;
   font-family: "Open Sans ", sans-serif;
-  font-size: 64px;
+  font-size: 450%;
   font-variant: small-caps;
   font-weight: 800;
-  text-align: center;
   background-color: crimson;
   color: whitesmoke;
-  padding: 10px;
+  padding: 1%;
 }
 
 /* reverses header on hover*/
 .header:hover {
   background-color: white;
+  color: crimson;
+  transition: 1s;
+}
+
+/* reverses header elements on hover*/
+.header:hover li {
   color: crimson;
   transition: 1s;
 }
@@ -31,12 +33,56 @@
   transition: 1s;
 }
 
+/* returns header elements to normal when not hovering*/
+.header:not(:hover) li {
+  color: white;
+  transition: 1s;
+}
+
 /*gives padding and space for header to main section*/
 .main {
-  padding: 16px;
-  margin-top: 100px;
+  padding: 5%;
+  margin-top: 2%;
 }
 
 body {
   margin: 0;
+}
+
+.navElement {
+  display: block;
+  margin: 1% 1%;
+  text-decoration: none;
+  text-align: right;
+}
+
+.header li {
+  list-style: none;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.header #login {
+  font-size: 50%;
+  margin-top: 1%;
+  margin-right: 5%;
+  float: right;
+}
+
+#loginDropdown {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 1%;
+  margin-right: 5%;
+  padding: 1%;
+  z-index: 1;
+}
+
+#login:hover #loginDropdown {
+  display: block;
 }
