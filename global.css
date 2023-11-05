@@ -16,7 +16,8 @@
 /* reverses header on hover*/
 .header:hover,
 .header:hover li,
-.header:hover a {
+.header:hover a,
+.header:hover li #heartbeat {
   background-color: white;
   color: crimson;
   transition: 1s;
@@ -25,10 +26,21 @@
 /*returns header to normal when not hovering*/
 .header:not(:hover),
 .header:not(:hover) li,
-.header:not(:hover) a {
+.header:not(:hover) a,
+.header:not(:hover) li #heartbeat {
   background-color: crimson;
   color: white;
   transition: 1s;
+}
+
+.header li #heartbeat {
+  vertical-align: middle;
+  display: table-cell;
+  font-family: "lineFont";
+  color: white;
+  border-color: black;
+  width: fit-content;
+  margin-left: 10%;
 }
 
 /*gives padding and space for header to main section*/
@@ -48,6 +60,9 @@ body {
   text-align: center;
   text-decoration: none;
 }
+
+
+
 
 .header .navLink {
   font-size: 50%;
@@ -126,8 +141,8 @@ input {
   font-size: 110%;
   font-weight: 600;
   font-variant: small-caps;
-  font-stretch:narrower;
-  color:crimson;
+  font-stretch: narrower;
+  color: crimson;
   background-color: whitesmoke;
   outline: none;
   border-radius: 15px;
@@ -137,9 +152,9 @@ input {
   margin: 0.5%;
 }
 
-.btn:hover{
+.btn:hover {
   border-color: black;
-  color:black;
+  color: black;
   background-color: crimson;
 }
 
