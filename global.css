@@ -137,7 +137,7 @@ input {
 }
 
 .btn {
-  width: 100px;
+  width: fit-content;
   font-size: 110%;
   font-weight: 600;
   font-variant: small-caps;

@@ -148,7 +148,7 @@ function addItem(ID) {
 	li.setAttribute('id', ID);
 	a.appendChild(li);
 }
-
+/*
 function addItem() {
 	var a = document.getElementById("sick list");
 	var li = document.createElement("li");
@@ -166,9 +166,9 @@ function addItem() {
 	})
 	li.appendChild(butt);
 	li.setAttribute('id', c);
-	c++;
 	a.appendChild(li);
 }
+*/
 
 async function makelist() {
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
