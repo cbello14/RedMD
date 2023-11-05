@@ -206,6 +206,7 @@ function addItem(ah) {
 		butt.innerText = ID;
 		butt.id = ID;
 		butt.classList.add("btn");
+		//li.setAttribute("title", so[ah].text);
 		console.log(butt.id);
 		butt.addEventListener('click', () => {
 			// When there is a "click"
