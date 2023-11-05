@@ -221,14 +221,14 @@ async function makelist() {
 		console.log(result);
 		var list = document.createElement("ul");
 		list.id = "myUL";
-		for (let i of result) {
+		for (let i = 0; i < result.length; i++) {
 			var item = document.createElement("li");
 			item.id = "boop";
 			var item1 = document.createElement("a"); 
-			item1.innerHTML = format(i);
+			item1.innerHTML = format(result[i]);
 			item.style.display = "none"; 
 			item.appendChild(item1);
-			item.addEventListener('click', () => addItem(i));
+			item.addEventListener('click', () => addItem(result[i]));
 			list.appendChild(item);
 		}
 		document.getElementById("test").appendChild(list);
