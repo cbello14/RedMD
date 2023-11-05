@@ -76,28 +76,48 @@ async function disease(){
 			}	
 		}
 	}
-	console.log("hi");
-	document.getElementById("diagnosed").innerText = string;
-	const slideElements = document.querySelectorAll(".hiddenDiagnose");
-	slideElements.forEach((el) => el.classList.add("showDiagnose"));
-	console.log("hi agian");
+	if(string!=""){
+		console.log("hi");
+		document.getElementById("diagnosed").innerText = string;
+		const slideElements = document.querySelectorAll(".hiddenDiagnose");
+		slideElements.forEach((el) => el.classList.add("showDiagnose"));
+		console.log("hi agian");
+	}
+	else{
+		alert("We couldnt find anything for those symptoms, sorry")
+	}
 
 
 }
 
 async function information(){
+	var string = ""
 	let res= await analyze();
 	for (i in res.VariableImportances){
 		for (k in res.VariableImportances[i]){
-			if(res.VariableImportances[i][k]>.1){
-				console.log(k);	
-				alert(k);
-				//in here - something!
+			for (j in res.VariableImportances[i][k]){
+				if(res.VariableImportances[i][k][j][1]>.1){
+					if(string!="")
+						string+=", "
+					string+=res.VariableImportances[i][k][j][0];
+					console.log(res.VariableImportances[i][k][j][0]);
+				}
+				else{
+					console.log("darn, not add var")
+					console.log(res.VariableImportances[i][k][j])
+				}
 			}
-			else{
-				console.log("too unlikely");
-			}	
 		}
+	}
+	if(string!=""){
+		console.log("hi");
+		document.getElementById("diagnosed").innerText = string;
+		const slideElements = document.querySelectorAll(".hiddenDiagnose");
+		slideElements.forEach((el) => el.classList.add("showDiagnose"));
+		console.log("hi agian");
+	}
+	else{
+		alert("We couldnt find anything for those symptoms, sorry")
 	}
 }
 
