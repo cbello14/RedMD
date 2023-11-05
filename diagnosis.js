@@ -131,6 +131,39 @@ async function deleteFeature(fName) {
 
 
 
+function removeItem(num) {
+ 
+	// Declaring a variable to get select element
+	var a = document.getElementById("sick list");
+  var item = document.getElementById(num);
+  console.log(item.id);
+  a.removeChild(item);
+}
+
+ 
+ 
+var c=0;
+
+function addItem() {
+  var a = document.getElementById("sick list");
+  var li = document.createElement("li");
+  var butt=document.createElement("Button");
+  butt.value=""+c;
+  butt.name=""+c;
+  butt.innerText = c;
+  butt.id=c;
+  butt.classList.add("btn");
+  console.log(butt.id);
+  butt.addEventListener('click', () => {
+  // When there is a "click"
+  // it shows an alert in the browser
+  removeItem(butt.id)
+    })
+    li.appendChild(butt);
+  li.setAttribute('id', c);
+  c++;
+  a.appendChild(li);
+}
 
 
 
