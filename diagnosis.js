@@ -1,4 +1,4 @@
-
+console.log(so);
 
 let options = {
 	method: 'GET',
@@ -44,12 +44,20 @@ async function analyze() {
 	try {
 		const response = await fetch(url, options);
 		let result = await response.text();
-		//result= JSON.parse(result);
+		result= JSON.parse(result);
 		console.log(result);
+		analyzeOutput(result);
 		return result;
 	} catch (error) {
 		console.log("lmao")
 		console.error(error);
+	}
+}
+
+function analyzeOutput(result) {
+	let diseases = result.Diseases;
+	for(let i = 0; i < diseases.length; i++) {
+		console.log(diseases[i]);
 	}
 }
 
@@ -235,7 +243,6 @@ async function myFunction() {
 }
 
 
-
 //getFeatures();
 /*
 
@@ -246,3 +253,4 @@ deleteFeature("Malnutrition");
 analyze();
 
 */
+
