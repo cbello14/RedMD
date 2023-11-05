@@ -44,12 +44,44 @@ async function analyze() {
 	try {
 		const response = await fetch(url, options);
 		let result = await response.text();
-		//result= JSON.parse(result);
+		result= JSON.parse(result);
 		console.log(result);
 		return result;
 	} catch (error) {
 		console.log("lmao")
 		console.error(error);
+	}
+}
+
+async function disease(){
+	let res= await analyze();
+	for (i in res.Diseases){
+		for (k in res.Diseases[i]){
+			if(res.Diseases[i][k]>.1){
+				console.log(k);	
+				alert(k);
+				//in here - something!
+			}
+			else{
+				console.log("too unlikely");
+			}	
+		}
+	}
+}
+
+async function information(){
+	let res= await analyze();
+	for (i in res.VariableImportances){
+		for (k in res.VariableImportances[i]){
+			if(res.VariableImportances[i][k]>.1){
+				console.log(k);	
+				alert(k);
+				//in here - something!
+			}
+			else{
+				console.log("too unlikely");
+			}	
+		}
 	}
 }
 
@@ -126,10 +158,6 @@ function removeItem(num) {
 	deleteFeature(num);
 }
 
-
-
-var c = 0;
-
 function addItem(ID) {
 	if(document.getElementById(ID)==null){
 		var a = document.getElementById("sick list");
@@ -152,27 +180,7 @@ function addItem(ID) {
 		updateFeature(ID,10);
 	}
 }
-/*
-function addItem() {
-	var a = document.getElementById("sick list");
-	var li = document.createElement("li");
-	var butt = document.createElement("Button");
-	butt.value = "" + c;
-	butt.name = "" + c;
-	butt.innerText = c;
-	butt.id = c;
-	butt.classList.add("btn");
-	console.log(butt.id);
-	butt.addEventListener('click', () => {
-		// When there is a "click"
-		// it shows an alert in the browser
-		removeItem(butt.id)
-	})
-	li.appendChild(butt);
-	li.setAttribute('id', c);
-	a.appendChild(li);
-}
-*/
+
 
 async function makelist() {
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
