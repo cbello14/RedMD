@@ -129,6 +129,26 @@ function removeItem(num) {
 
 var c = 0;
 
+function addItem(ID) {
+	var a = document.getElementById("sick list");
+	var li = document.createElement("li");
+	var butt = document.createElement("Button");
+	butt.value = "" + ID;
+	butt.name = "" + ID;
+	butt.innerText = ID;
+	butt.id = ID;
+	butt.classList.add("btn");
+	console.log(butt.id);
+	butt.addEventListener('click', () => {
+		// When there is a "click"
+		// it shows an alert in the browser
+		removeItem(ID)
+	})
+	li.appendChild(butt);
+	li.setAttribute('id', c);
+	a.appendChild(li);
+}
+
 function addItem() {
 	var a = document.getElementById("sick list");
 	var li = document.createElement("li");
