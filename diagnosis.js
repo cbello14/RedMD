@@ -181,8 +181,16 @@ function removeItem(num) {
 	deleteFeature(num);
 }
 
-function addItem(ID) {
+function addItem(ah) {
+	const ID = so[ah].name;
 	if(document.getElementById(ID)==null){
+		let question = so[ah].text;
+		if(so[ah].type == "categorical") {
+			for(let i = 1; i <= so[ah].choices.length; i++) {
+				question += "\n\n input " + i + " if answer is " + so[ah].choices[i - 1].text;
+			}
+		}
+		let val = prompt(question);
 		var a = document.getElementById("sick list");
 		var li = document.createElement("li");
 		var butt = document.createElement("Button");
@@ -200,7 +208,8 @@ function addItem(ID) {
 		li.appendChild(butt);
 		li.setAttribute('id', ID);
 		a.appendChild(li);
-		updateFeature(ID,10);
+		updateFeature(ID,val);
+		
 	}
 }
 
@@ -228,13 +237,25 @@ async function makelist() {
 			item1.innerHTML = format(result[i]);
 			item.style.display = "none"; 
 			item.appendChild(item1);
-			item.addEventListener('click', () => addItem(result[i]));
+			item.addEventListener('click', () => addItem(i));
 			list.appendChild(item);
 		}
 		document.getElementById("test").appendChild(list);
 }
 
 makelist(); 
+
+function hideList() {
+	var input;
+	input = document.getElementById('myInput');
+	if(input.value == '') {
+		ul = document.getElementById("myUL");
+		li = ul.getElementsByTagName('li');
+		for(i = 0; i < li.length; i++) {
+			li[i].style.display = "none";
+		}
+	}
+}
 
 const format=(camel)=>{
     const camelCase =camel.replace(/([a-z])([A-Z])/g, '$1 $2')
