@@ -58,15 +58,15 @@ async function getOutcomes(){
 }
 
 async function analyze() {
+	await acceptTermsOfUse();
 	var it= await id;
-	console.log("^^^^")
-	console.log(id)
-	console.log("^^^^")
 	const url =  'https://endlessmedicalapi1.p.rapidapi.com/Analyze?SessionID='+it;
 	try {
 		const response = await fetch(url, options);
-		const result = await response.text();
+		let result = await response.text();
+		result= JSON.parse(result);
 		console.log(result);
+		return result;
 	} catch (error) {
 		console.log("lmao")
 		console.error(error);
@@ -88,6 +88,68 @@ async function acceptTermsOfUse(){
 	try {
 		const response = await fetch(url, options);
 		const result = await response.text();
+		//console.log(result);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+async function getFeatures(){
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
+	const options = {
+		method: 'GET',
+		headers: {
+			'X-RapidAPI-Key': 'e049190567msh2f14db14023c908p1866afjsn026718c6294e',
+			'X-RapidAPI-Host': 'endlessmedicalapi1.p.rapidapi.com'
+		}
+	};
+
+	try {
+		const response = await fetch(url, options);
+		const result = await response.text();
+		console.log(result);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+async function updateFeature(fName,value){
+	await acceptTermsOfUse();
+	const it=await id;
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/UpdateFeature?name='+fName+'&value='+value+'&SessionID='+it;
+	const options = {
+		method: 'POST',
+		headers: {
+			'X-RapidAPI-Key': 'e049190567msh2f14db14023c908p1866afjsn026718c6294e',
+			'X-RapidAPI-Host': 'endlessmedicalapi1.p.rapidapi.com'
+		}
+	};
+
+	try {
+		const response = await fetch(url, options);
+		const result = await response.text();
+		console.log("up reportx")
+		console.log(result);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+async function deleteFeature(fName){
+	await acceptTermsOfUse();
+	const it=await id;
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/DeleteFeature?name='+fName+'&SessionID='+it;
+	const options = {
+		method: 'POST',
+		headers: {
+			'X-RapidAPI-Key': 'e049190567msh2f14db14023c908p1866afjsn026718c6294e',
+			'X-RapidAPI-Host': 'endlessmedicalapi1.p.rapidapi.com'
+		}
+	};
+
+	try {
+		const response = await fetch(url, options);
+		const result = await response.text();
 		console.log(result);
 	} catch (error) {
 		console.error(error);
@@ -95,5 +157,15 @@ async function acceptTermsOfUse(){
 }
 
 const id=getID();
-acceptTermsOfUse();
+
+//getFeatures();
+
+/*
+
 analyze();
+updateFeature("Malnutrition",20);
+analyze();
+deleteFeature("Malnutrition");
+analyze();
+
+*/
