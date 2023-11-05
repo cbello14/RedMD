@@ -130,12 +130,18 @@ async function deleteFeature(fName){
 const id=getID();
 
 
-
+var c=0;
 
 function function1() {
   var ul = document.getElementById("sick list");
-  var li = document.createElement("button");
-  li.appendChild(document.createTextNode("Four"));
+  var li = document.createElement("li");
+  var but= document.createElement("Button");
+  but.value=""+c;
+  but.name=""+c;
+  but.innerText = c;
+  c++;
+  console.log(but.value);
+  li.appendChild(but);
   li.setAttribute("id", "element4"); // added line
   ul.appendChild(li);
 }
