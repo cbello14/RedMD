@@ -194,7 +194,7 @@ async function makelist() {
 			var item = document.createElement("li");
 			item.id = "boop";
 			var item1 = document.createElement("a"); 
-			item1.innerHTML = i;
+			item1.innerHTML = format(i);
 			item.style.display = "none"; 
 			item.appendChild(item1);
 			item.addEventListener('click', () => addItem(i));
@@ -204,6 +204,12 @@ async function makelist() {
 }
 
 makelist(); 
+
+const format=(camel)=>{
+    const camelCase =camel.replace(/([a-z])([A-Z])/g, '$1 $2')
+
+    return camelCase
+}
 
 async function myFunction() {
 
