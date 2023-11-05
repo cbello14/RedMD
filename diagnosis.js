@@ -123,6 +123,7 @@ function removeItem(num) {
 	var item = document.getElementById(num);
 	console.log(item.id);
 	a.removeChild(item);
+	deleteFeature(num);
 }
 
 
@@ -130,23 +131,26 @@ function removeItem(num) {
 var c = 0;
 
 function addItem(ID) {
-	var a = document.getElementById("sick list");
-	var li = document.createElement("li");
-	var butt = document.createElement("Button");
-	butt.value = "" + ID;
-	butt.name = "" + ID;
-	butt.innerText = ID;
-	butt.id = ID;
-	butt.classList.add("btn");
-	console.log(butt.id);
-	butt.addEventListener('click', () => {
-		// When there is a "click"
-		// it shows an alert in the browser
-		removeItem(ID)
-	})
-	li.appendChild(butt);
-	li.setAttribute('id', ID);
-	a.appendChild(li);
+	if(document.getElementById(ID)==null){
+		var a = document.getElementById("sick list");
+		var li = document.createElement("li");
+		var butt = document.createElement("Button");
+		butt.value = "" + ID;
+		butt.name = "" + ID;
+		butt.innerText = ID;
+		butt.id = ID;
+		butt.classList.add("btn");
+		console.log(butt.id);
+		butt.addEventListener('click', () => {
+			// When there is a "click"
+			// it shows an alert in the browser
+			removeItem(ID)
+		})
+		li.appendChild(butt);
+		li.setAttribute('id', ID);
+		a.appendChild(li);
+		updateFeature(ID,10);
+	}
 }
 /*
 function addItem() {
@@ -190,7 +194,7 @@ async function makelist() {
 			var item = document.createElement("li");
 			item.id = "boop";
 			var item1 = document.createElement("a"); 
-			item1.innerHTML = i;
+			item1.innerHTML = format(i);
 			item.style.display = "none"; 
 			item.appendChild(item1);
 			item.addEventListener('click', () => addItem(i));
@@ -200,6 +204,12 @@ async function makelist() {
 }
 
 makelist(); 
+
+const format=(camel)=>{
+    const camelCase =camel.replace(/([a-z])([A-Z])/g, '$1 $2')
+
+    return camelCase
+}
 
 async function myFunction() {
 
