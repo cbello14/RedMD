@@ -16,7 +16,6 @@ async function getID() {
 getID();
 */
 
-
 let options = {
 	method: 'GET',
 	headers: {
@@ -132,21 +131,36 @@ const id=getID();
 
 var c=0;
 
-function function1() {
-  var ul = document.getElementById("sick list");
+function addItem() {
+  var a = document.getElementById("sick list");
   var li = document.createElement("li");
-  var but= document.createElement("Button");
-  but.value=""+c;
-  but.name=""+c;
-  but.innerText = c;
+  var butt=document.createElement("Button");
+  butt.value=""+c;
+  butt.name=""+c;
+  butt.innerText = c;
+  butt.id=c;
+  butt.classList.add("btn");
+  console.log(butt.id);
+  butt.addEventListener('click', () => {
+  // When there is a "click"
+  // it shows an alert in the browser
+  removeItem(butt.id)
+	})
+	li.appendChild(butt);
+  li.setAttribute('id', c);
   c++;
-  console.log(but.value);
-  li.appendChild(but);
-  li.setAttribute("id", "element4"); // added line
-  ul.appendChild(li);
+  a.appendChild(li);
 }
-
-
+ 
+// Creating a function to remove item from list
+function removeItem(num) {
+ 
+	// Declaring a variable to get select element
+	var a = document.getElementById("sick list");
+  var item = document.getElementById(num);
+  console.log(item.id);
+  a.removeChild(item);
+}
 
 //getFeatures();
 
