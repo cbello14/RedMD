@@ -38,7 +38,7 @@ async function getID() {
 	}
 }
 
-async function getOutcomes(){
+async function getOutcomes() {
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetOutcomes';
 	options.method = 'GET';
 
@@ -53,8 +53,8 @@ async function getOutcomes(){
 
 async function analyze() {
 	await acceptTermsOfUse();
-	const it= await id;
-	const url =  'https://endlessmedicalapi1.p.rapidapi.com/Analyze?SessionID='+it;
+	const it = await id;
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/Analyze?SessionID=' + it;
 	options.method = 'GET';
 	try {
 		const response = await fetch(url, options);
@@ -69,9 +69,9 @@ async function analyze() {
 }
 
 
-async function acceptTermsOfUse(){
-	const it=await id;
-	const url = 'https://endlessmedicalapi1.p.rapidapi.com/AcceptTermsOfUse?SessionID='+it+'&passphrase=I%20have%20read%2C%20understood%20and%20I%20accept%20and%20agree%20to%20comply%20with%20the%20Terms%20of%20Use%20of%20EndlessMedicalAPI%20and%20Endless%20Medical%20services.%20The%20Terms%20of%20Use%20are%20available%20on%20endlessmedical.com';
+async function acceptTermsOfUse() {
+	const it = await id;
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/AcceptTermsOfUse?SessionID=' + it + '&passphrase=I%20have%20read%2C%20understood%20and%20I%20accept%20and%20agree%20to%20comply%20with%20the%20Terms%20of%20Use%20of%20EndlessMedicalAPI%20and%20Endless%20Medical%20services.%20The%20Terms%20of%20Use%20are%20available%20on%20endlessmedical.com';
 	options.method = 'POST';
 
 	try {
@@ -83,23 +83,25 @@ async function acceptTermsOfUse(){
 	}
 }
 
-async function getFeatures(){
+async function getFeatures() {
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
 	options.method = 'GET';
 
 	try {
 		const response = await fetch(url, options);
-		const result = await response.text();
+		let result = await response.text();
+		result = JSON.parse(result);
 		console.log(result);
+		return result;
 	} catch (error) {
 		console.error(error);
 	}
 }
 
-async function updateFeature(fName,value){
+async function updateFeature(fName, value) {
 	await acceptTermsOfUse();
-	const it=await id;
-	const url = 'https://endlessmedicalapi1.p.rapidapi.com/UpdateFeature?name='+fName+'&value='+value+'&SessionID='+it;
+	const it = await id;
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/UpdateFeature?name=' + fName + '&value=' + value + '&SessionID=' + it;
 	options.method = 'POST';
 
 	try {
@@ -112,10 +114,10 @@ async function updateFeature(fName,value){
 	}
 }
 
-async function deleteFeature(fName){
+async function deleteFeature(fName) {
 	await acceptTermsOfUse();
-	const it=await id;
-	const url = 'https://endlessmedicalapi1.p.rapidapi.com/DeleteFeature?name='+fName+'&SessionID='+it;
+	const it = await id;
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/DeleteFeature?name=' + fName + '&SessionID=' + it;
 	options.method = 'POST';
 
 	try {
@@ -127,23 +129,69 @@ async function deleteFeature(fName){
 	}
 }
 
-const id=getID();
+const id = getID();
 
 
-var c=0;
+var c = 0;
 
 function function1() {
-  var ul = document.getElementById("sick list");
-  var li = document.createElement("li");
-  var but= document.createElement("Button");
-  but.value=""+c;
-  but.name=""+c;
-  but.innerText = c;
-  c++;
-  console.log(but.value);
-  li.appendChild(but);
-  li.setAttribute("id", "element4"); // added line
-  ul.appendChild(li);
+	var ul = document.getElementById("sick list");
+	var li = document.createElement("li");
+	var but = document.createElement("Button");
+	but.value = "" + c;
+	but.name = "" + c;
+	but.innerText = c;
+	c++;
+	console.log(but.value);
+	li.appendChild(but);
+	li.setAttribute("id", "element4"); // added line
+	ul.appendChild(li);
+}
+
+
+
+async function myFunction() {
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
+	let result; 
+	options.method = 'GET';
+	try {
+		const response = await fetch(url, options);
+		result = await response.text();
+		result = JSON.parse(result);
+		console.log(result);
+	} catch (error) {
+		console.error(error);
+	}
+	result = result.data; 
+	console.log(result);
+	var list = document.createElement("ul");
+	list.id = "myUL";
+	for (let i of result) {
+		var item = document.createElement("li");
+		var item1 = document.createElement("a"); item1.innerHTML = i; item.appendChild(item1);
+		list.appendChild(item);
+	}
+	document.getElementById("test").appendChild(list);
+	// Declare variables
+	var input, filter, ul, li, a, i, txtValue;
+	input = document.getElementById('myInput');
+	filter = input.value.toLowerCase();
+
+	ul = document.getElementById("myUL");
+	li = ul.getElementsByTagName('li');
+
+	// Loop through all list items, and hide those who don't match the search query
+	for (i = 0; i < li.length; i++) {
+		a = li[i].getElementsByTagName("a")[0];
+		txtValue = a.textContent || a.innerText;
+		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+			li[i].style.display = "";
+		} else {
+			li[i].style.display = "none";
+		}
+	}
+
+
 }
 
 
