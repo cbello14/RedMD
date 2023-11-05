@@ -9,32 +9,24 @@
   font-variant: small-caps;
   font-weight: 800;
   background-color: crimson;
-  color: whitesmoke;
+  color: white;
   padding: 1%;
 }
 
 /* reverses header on hover*/
-.header:hover {
+.header:hover,
+.header:hover li,
+.header:hover a {
   background-color: white;
   color: crimson;
   transition: 1s;
 }
 
-/* reverses header elements on hover*/
-.header:hover li {
-  color: crimson;
-  transition: 1s;
-}
-
 /*returns header to normal when not hovering*/
-.header:not(:hover) {
+.header:not(:hover),
+.header:not(:hover) li,
+.header:not(:hover) a {
   background-color: crimson;
-  color: white;
-  transition: 1s;
-}
-
-/* returns header elements to normal when not hovering*/
-.header:not(:hover) li {
   color: white;
   transition: 1s;
 }
@@ -59,7 +51,7 @@ body {
 .header li {
   list-style: none;
   float: left;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
   text-decoration: none;
 }
@@ -75,9 +67,8 @@ body {
   font-size: 50%;
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: white;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   margin-right: 5%;
   padding: 1%;
   z-index: 1;
@@ -97,4 +88,8 @@ body {
 
 input {
   margin-top: 1%;
+}
+
+.header a {
+  text-decoration: none;
 }
