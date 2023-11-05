@@ -60,9 +60,12 @@ async function disease(){
 	for (i in res.Diseases){
 		for (k in res.Diseases[i]){
 			if(res.Diseases[i][k]>.1){
+				if(string!=""){
+					string+=", ";
+				}
 				string+=k;
 				console.log(k);	
-				alert(k);
+				//alert(k);
 				//in here - something!
 			}
 			else{
