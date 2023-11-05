@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;800&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Linefont&display=swap");
+    </style>
+    <link rel="stylesheet" href="global.css" />
+    <script src="diagnosis.js"></script>
+    <title>Diagnosis</title>
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, initial-scale = 1"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <li id="home">RedMD</li>
+      
+      <li class="navLink" id="login">
+        Account
+        <div id="loginDropdown">
+          <p>Profile Name</p>
+          <p>Settings</p>
+          <p>Log out</p>
+        </div>
+      </li>
+      <li class="navLink"><a href="diagnosis.html">Diagnosis</a></li>
+    </div>
+    <div class="main">
+      <input id="clickMe" type="button" value="analyze" onclick="analyze();" />
+      <input
+        id="clickMee"
+        type="button"
+        value="update"
+        onclick="updateFeature('Malnutrition',20);"
+      />
+      <input
+        id="clickMeee"
+        type="button"
+        value="delete"
+        onclick="deleteFeature('Malnutrition');"
+      />
+    </div>
+  </body>
+</html>
