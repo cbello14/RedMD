@@ -1,4 +1,4 @@
-
+console.log(so);
 
 let options = {
 	method: 'GET',
@@ -46,6 +46,7 @@ async function analyze() {
 		let result = await response.text();
 		result= JSON.parse(result);
 		console.log(result);
+		analyzeOutput(result);
 		return result;
 	} catch (error) {
 		console.log("lmao")
@@ -82,6 +83,13 @@ async function information(){
 				console.log("too unlikely");
 			}	
 		}
+	}
+}
+
+function analyzeOutput(result) {
+	let diseases = result.Diseases;
+	for(let i = 0; i < diseases.length; i++) {
+		console.log(diseases[i]);
 	}
 }
 
@@ -243,7 +251,6 @@ async function myFunction() {
 }
 
 
-
 //getFeatures();
 /*
 
@@ -254,3 +261,4 @@ deleteFeature("Malnutrition");
 analyze();
 
 */
+

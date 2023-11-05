@@ -11,6 +11,7 @@
   background-color: white;
   color: crimson;
   padding: 1%;
+  z-index: 10;
 }
 
 /* reverses header on hover*/
@@ -50,6 +51,7 @@
 }
 
 body {
+  padding: 0;
   margin: 0;
 }
 
@@ -60,9 +62,6 @@ body {
   text-align: center;
   text-decoration: none;
 }
-
-
-
 
 .header .navLink {
   font-size: 50%;
@@ -103,8 +102,9 @@ input {
 .header a {
   text-decoration: none;
 }
+
 #myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-image: url("/css/searchicon.png"); /* Add a search icon to input */
   background-position: 10px 12px; /* Position the search icon */
   background-repeat: no-repeat; /* Do not repeat the icon image */
   width: 100%; /* Full-width */
@@ -158,3 +158,31 @@ input {
   background-color: crimson;
 }
 
+section {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  min-height: 100vh;
+}
+
+h1,
+h2 {
+  padding-top: 10%;
+}
+
+.scrollImages li {
+  padding: 1%;
+  list-style-type: none;
+  display: inline;
+}
+
+.slide {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.show {
+  font-family: "Open Sans ", sans-serif;
+  color:crimson;
+  opacity: 1;
+}
