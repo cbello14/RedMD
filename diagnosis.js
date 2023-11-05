@@ -55,10 +55,12 @@ async function analyze() {
 }
 
 async function disease(){
+	var string = ""
 	let res= await analyze();
 	for (i in res.Diseases){
 		for (k in res.Diseases[i]){
 			if(res.Diseases[i][k]>.1){
+				string+=k;
 				console.log(k);	
 				alert(k);
 				//in here - something!
@@ -68,6 +70,13 @@ async function disease(){
 			}	
 		}
 	}
+	console.log("hi");
+	document.getElementById("diagnosed").innerText = string;
+	const slideElements = document.querySelectorAll(".hiddenDiagnose");
+	slideElements.forEach((el) => el.classList.add("showDiagnose"));
+	console.log("hi agian");
+
+
 }
 
 async function information(){
@@ -248,6 +257,11 @@ async function myFunction() {
 	}
 
 
+}
+
+function hideDiagnoses() {
+	const slideElements = document.querySelectorAll(".hiddenDiagnose");
+    slideElements.forEach((el) => el.classList.remove("showDiagnose"));
 }
 
 

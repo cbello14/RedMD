@@ -7,6 +7,7 @@
     </style>
     <link rel="stylesheet" href="global.css" />
 	<script src="sym.js"></script>
+    <link rel="stylesheet" href="diagnosis.css" />
     <script src="diagnosis.js"></script>
     <title>Diagnosis</title>
     <meta
@@ -43,7 +44,10 @@
         value="key factors"
         onclick="information();"
       />
-
+        <div class="hiddenDiagnose">
+            <p class="hiddenDiagnose" id="diagnosed"></p>
+            <button class = "hiddenDiagnose" type="button" onclick="hideDiagnoses()">Empty Diagnosis</button>
+        </div>
       <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
       <div id="test">
     </div>
