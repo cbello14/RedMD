@@ -117,70 +117,73 @@ async function deleteFeature(fName) {
 
 
 function removeItem(num) {
- 
+
 	// Declaring a variable to get select element
 	var a = document.getElementById("sick list");
-  var item = document.getElementById(num);
-  console.log(item.id);
-  a.removeChild(item);
+	var item = document.getElementById(num);
+	console.log(item.id);
+	a.removeChild(item);
 }
 
- 
- 
-var c=0;
+
+
+var c = 0;
 
 function addItem() {
-  var a = document.getElementById("sick list");
-  var li = document.createElement("li");
-  var butt=document.createElement("Button");
-  butt.value=""+c;
-  butt.name=""+c;
-  butt.innerText = c;
-  butt.id=c;
-  butt.classList.add("btn");
-  console.log(butt.id);
-  butt.addEventListener('click', () => {
-  // When there is a "click"
-  // it shows an alert in the browser
-  removeItem(butt.id)
-    })
-    li.appendChild(butt);
-  li.setAttribute('id', c);
-  c++;
-  a.appendChild(li);
+	var a = document.getElementById("sick list");
+	var li = document.createElement("li");
+	var butt = document.createElement("Button");
+	butt.value = "" + c;
+	butt.name = "" + c;
+	butt.innerText = c;
+	butt.id = c;
+	butt.classList.add("btn");
+	console.log(butt.id);
+	butt.addEventListener('click', () => {
+		// When there is a "click"
+		// it shows an alert in the browser
+		removeItem(butt.id)
+	})
+	li.appendChild(butt);
+	li.setAttribute('id', c);
+	c++;
+	a.appendChild(li);
 }
 
+async function makelist() {
+	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
+		let result;
+		options.method = 'GET';
+		try {
+			const response = await fetch(url, options);
+			result = await response.text();
+			result = JSON.parse(result);
+			console.log(result);
+		} catch (error) {
+			console.error(error);
+		}
+		result = result.data;
+		console.log(result);
+		var list = document.createElement("ul");
+		list.id = "myUL";
+		for (let i of result) {
+			var item = document.createElement("li");
+			item.id = "boop";
+			var item1 = document.createElement("a"); item1.innerHTML = i;
+			item.style.display = "none"; item.appendChild(item1);
+			list.appendChild(item);
+		}
+		document.getElementById("test").appendChild(list);
+}
 
-
-
+makelist(); 
 
 async function myFunction() {
-	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
-	let result; 
-	options.method = 'GET';
-	try {
-		const response = await fetch(url, options);
-		result = await response.text();
-		result = JSON.parse(result);
-		console.log(result);
-	} catch (error) {
-		console.error(error);
-	}
-	result = result.data; 
-	console.log(result);
-	var list = document.createElement("ul");
-	list.id = "myUL";
-	for (let i of result) {
-		var item = document.createElement("li");
-		var item1 = document.createElement("a"); item1.innerHTML = i; item.appendChild(item1);
-		list.appendChild(item);
-	}
-	document.getElementById("test").appendChild(list);
+
 	// Declare variables
 	var input, filter, ul, li, a, i, txtValue;
 	input = document.getElementById('myInput');
-	filter = input.value.toLowerCase();
-
+	filter = input.value.toUpperCase();
 	ul = document.getElementById("myUL");
 	li = ul.getElementsByTagName('li');
 
