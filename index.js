@@ -6,7 +6,6 @@ let options = {
 	}
 };
 
-
 async function getID() {
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/InitSession';
 	try {
@@ -18,6 +17,8 @@ async function getID() {
 		console.error(error);
 	}
 }
+
+var id=getID();
 
 async function getOutcomes(){
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetOutcomes';

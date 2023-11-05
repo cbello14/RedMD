@@ -1,21 +1,4 @@
 
-/*
-async function getID() {
-	try {
-		const response = await axios.request(options);
-		console.log(response.data);
-		const id = response.data.SessionID;
-		console.log(id);
-		return id
-		
-	} catch (error) {
-		console.error(error);
-	}
-}
-
-getID();
-*/
-
 
 let options = {
 	method: 'GET',
@@ -37,6 +20,8 @@ async function getID() {
 		console.error(error);
 	}
 }
+
+var id=getID();
 
 async function getOutcomes() {
 	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetOutcomes';
@@ -216,7 +201,6 @@ async function myFunction() {
 
 
 //getFeatures();
-
 /*
 
 analyze();
