@@ -16,7 +16,6 @@ async function getID() {
 getID();
 */
 
-
 let options = {
 	method: 'GET',
 	headers: {
@@ -135,64 +134,39 @@ const id = getID();
 var c = 0;
 
 function function1() {
-	var ul = document.getElementById("sick list");
+  var ul = document.getElementById("sick list");
+  var li = document.createElement("li");
+  var but= document.createElement("Button");
+  but.value=""+c;
+  but.name=""+c;
+  but.innerText = c;
+  c++;
+  console.log(but.value);
+  li.appendChild(but);
+  li.setAttribute("id", "element4"); // added line
+  ul.appendChild(li);
+}
+
+function addItem() {
+	var a = document.getElementById("sick list");
 	var li = document.createElement("li");
-	var but = document.createElement("Button");
-	but.value = "" + c;
-	but.name = "" + c;
-	but.innerText = c;
+	var butt=document.createElement("Button");
+	butt.value=""+c;
+	butt.name=""+c;
+	butt.innerText = c;
+	butt.id=c;
+	butt.classList.add("btn");
+	console.log(butt.id);
+	butt.addEventListener('click', () => {
+	// When there is a "click"
+	// it shows an alert in the browser
+	removeItem(butt.id)
+	  })
+	  li.appendChild(butt);
+	li.setAttribute('id', c);
 	c++;
-	console.log(but.value);
-	li.appendChild(but);
-	li.setAttribute("id", "element4"); // added line
-	ul.appendChild(li);
-}
-
-
-
-async function myFunction() {
-	const url = 'https://endlessmedicalapi1.p.rapidapi.com/GetFeatures';
-	let result; 
-	options.method = 'GET';
-	try {
-		const response = await fetch(url, options);
-		result = await response.text();
-		result = JSON.parse(result);
-		console.log(result);
-	} catch (error) {
-		console.error(error);
-	}
-	result = result.data; 
-	console.log(result);
-	var list = document.createElement("ul");
-	list.id = "myUL";
-	for (let i of result) {
-		var item = document.createElement("li");
-		var item1 = document.createElement("a"); item1.innerHTML = i; item.appendChild(item1);
-		list.appendChild(item);
-	}
-	document.getElementById("test").appendChild(list);
-	// Declare variables
-	var input, filter, ul, li, a, i, txtValue;
-	input = document.getElementById('myInput');
-	filter = input.value.toLowerCase();
-
-	ul = document.getElementById("myUL");
-	li = ul.getElementsByTagName('li');
-
-	// Loop through all list items, and hide those who don't match the search query
-	for (i = 0; i < li.length; i++) {
-		a = li[i].getElementsByTagName("a")[0];
-		txtValue = a.textContent || a.innerText;
-		if (txtValue.toUpperCase().indexOf(filter) > -1) {
-			li[i].style.display = "";
-		} else {
-			li[i].style.display = "none";
-		}
-	}
-
-
-}
+	a.appendChild(li);
+  }
 
 
 

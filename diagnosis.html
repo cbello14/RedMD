@@ -13,7 +13,7 @@
       content="width=device-width, height=device-height, initial-scale = 1"
     />
   </head>
-  
+
   <body>
     <div class="header">
       <li id="home"><a href="index.html">RedMD</a></li>
@@ -28,20 +28,28 @@
       <li class="navLink"><a href="diagnosis.html">Diagnosis</a></li>
     </div>
     <div class="main">
-      <input id="clickMe" type="button" value="analyze" onclick="analyze();" />
       <input
+        class="btn"
+        id="clickMe"
+        type="button"
+        value="analyze"
+        onclick="analyze();"
+      />
+      <input
+        class="btn"
         id="clickMee"
         type="button"
         value="update"
         onclick="updateFeature('Malnutrition',20);"
       />
       <input
+        class="btn"
         id="clickMeee"
         type="button"
         value="delete"
         onclick="deleteFeature('Malnutrition');"
       />
-      <input id="clickMe" value="analyze" onclick="function1();" />
+      <input id="clickMe" value="analyze" onclick="addItem();" />
       <ul id="sick list">
       </ul>
     </div>

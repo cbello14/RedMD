@@ -8,8 +8,8 @@
   font-size: 450%;
   font-variant: small-caps;
   font-weight: 800;
-  background-color: crimson;
-  color: white;
+  background-color: white;
+  color: crimson;
   padding: 1%;
 }
 
@@ -44,7 +44,7 @@ body {
 .header li {
   list-style: none;
   float: left;
-  color: white;
+  color: crimson;
   text-align: center;
   text-decoration: none;
 }
@@ -120,3 +120,26 @@ input {
 #myUL li a:hover:not(.header) {
   background-color: #eee; /* Add a hover effect to all links, except for headers */
 }
+
+.btn {
+  width: 100px;
+  font-size: 110%;
+  font-weight: 600;
+  font-variant: small-caps;
+  font-stretch:narrower;
+  color:crimson;
+  background-color: whitesmoke;
+  outline: none;
+  border-radius: 15px;
+  border-style: solid;
+  border-color: crimson;
+  border-width: 5px;
+  margin: 0.5%;
+}
+
+.btn:hover{
+  border-color: black;
+  color:black;
+  background-color: crimson;
+}
+
