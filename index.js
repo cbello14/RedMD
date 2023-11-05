@@ -59,7 +59,7 @@ async function analyze() {
 	try {
 		const response = await fetch(url, options);
 		let result = await response.text();
-		result= JSON.parse(result);
+		//result= JSON.parse(result);
 		console.log(result);
 		return result;
 	} catch (error) {
@@ -128,6 +128,19 @@ async function deleteFeature(fName){
 }
 
 const id=getID();
+
+
+
+
+function function1() {
+  var ul = document.getElementById("sick list");
+  var li = document.createElement("button");
+  li.appendChild(document.createTextNode("Four"));
+  li.setAttribute("id", "element4"); // added line
+  ul.appendChild(li);
+}
+
+
 
 //getFeatures();
 
