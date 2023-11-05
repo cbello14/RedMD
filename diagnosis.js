@@ -59,14 +59,23 @@ async function analyze() {
 
 async function disease(){
 	var string = ""
+	var str = "";
 	let res= await analyze();
 	for (i in res.Diseases){
 		for (k in res.Diseases[i]){
-			if(res.Diseases[i][k]>.1){
-				if(string!=""){
-					string+=", ";
-				}
+			if(res.Diseases[i][k]>.01){
 				string+=k;
+				string += ":           Fit: ";
+				str = JSON.stringify(res.Diseases[i]);
+				console.log(str);
+				for(let j = 0; j < str.length; j++) {
+					if(str.charAt(j) == '.') {
+						string += str.substr(j + 1, 2);
+						string += '.';
+						string += str.substr(j + 3, 3);
+						string += '%\n';
+					}
+				}
 				console.log(k);	
 				//alert(k);
 				//in here - something!
