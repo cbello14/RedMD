@@ -1,4 +1,7 @@
 console.log(so);
+for(let i = 0; i < so.length; i++) {
+	so[i].alias = so[i].alias.split(", ");
+}
 
 let options = {
 	method: 'GET',
@@ -242,7 +245,7 @@ const format=(camel)=>{
 async function myFunction() {
 
 	// Declare variables
-	var input, filter, ul, li, a, i, txtValue;
+	var input, filter, ul, li, a, i, txtValue, b, badName, badAlias;
 	input = document.getElementById('myInput');
 	filter = input.value.toUpperCase();
 	ul = document.getElementById("myUL");
@@ -250,11 +253,23 @@ async function myFunction() {
 
 	// Loop through all list items, and hide those who don't match the search query
 	for (i = 0; i < li.length; i++) {
+		badName = false;
+		badAlias = true;
 		a = li[i].getElementsByTagName("a")[0];
 		txtValue = a.textContent || a.innerText;
 		if (txtValue.toUpperCase().indexOf(filter) > -1) {
 			li[i].style.display = "";
 		} else {
+			badName = true;
+		}
+		for(j = 0; j < so[i].alias.length; j++) {
+			b = so[i].alias[j];
+			b = b.toUpperCase();
+			if(b.includes(filter)) {
+				badAlias = false;
+			}
+		}
+		if(badName && badAlias) {
 			li[i].style.display = "none";
 		}
 	}

@@ -1,4 +1,4 @@
-var so = [ "balls",
+var so = [
   {
     "text": "What is the age?",
     "laytext": "Age",
