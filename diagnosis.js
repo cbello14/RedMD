@@ -62,7 +62,7 @@ async function acceptTermsOfUse() {
 	try {
 		const response = await fetch(url, options);
 		const result = await response.text();
-		//console.log(result);
+		console.log(result);
 	} catch (error) {
 		console.error(error);
 	}
@@ -145,7 +145,7 @@ function addItem(ID) {
 		removeItem(ID)
 	})
 	li.appendChild(butt);
-	li.setAttribute('id', c);
+	li.setAttribute('id', ID);
 	a.appendChild(li);
 }
 
@@ -189,8 +189,11 @@ async function makelist() {
 		for (let i of result) {
 			var item = document.createElement("li");
 			item.id = "boop";
-			var item1 = document.createElement("a"); item1.innerHTML = i;
-			item.style.display = "none"; item.appendChild(item1);
+			var item1 = document.createElement("a"); 
+			item1.innerHTML = i;
+			item.style.display = "none"; 
+			item.appendChild(item1);
+			item.addEventListener('click', () => addItem(i));
 			list.appendChild(item);
 		}
 		document.getElementById("test").appendChild(list);
