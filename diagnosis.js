@@ -181,6 +181,13 @@ function removeItem(num) {
 	deleteFeature(num);
 }
 
+function initAgeAndBMI() {
+	let age = prompt(so[0].text, 35);
+	let bmi = prompt(so[1].text, 19);
+	updateFeature("Age", age);
+	updateFeature("BMI", bmi);
+}
+
 function addItem(ah) {
 	const ID = so[ah].name;
 	if(document.getElementById(ID)==null){
@@ -290,7 +297,7 @@ async function myFunction() {
 				badAlias = false;
 			}
 		}
-		if(badName && badAlias) {
+		if((badName && badAlias) || (li[i].textContent == 'Age' || li[i].textContent == 'BMI')) {
 			li[i].style.display = "none";
 		}
 	}
