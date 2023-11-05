@@ -41,13 +41,6 @@ body {
   margin: 0;
 }
 
-.navElement {
-  display: block;
-  margin: 1% 1%;
-  text-decoration: none;
-  text-align: right;
-}
-
 .header li {
   list-style: none;
   float: left;
@@ -60,6 +53,8 @@ body {
   font-size: 50%;
   margin-top: 1%;
   margin-right: 5%;
+  padding-bottom: 0%;
+  margin-bottom: 0%;
   float: right;
 }
 
