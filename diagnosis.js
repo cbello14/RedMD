@@ -123,6 +123,7 @@ function removeItem(num) {
 	var item = document.getElementById(num);
 	console.log(item.id);
 	a.removeChild(item);
+	deleteFeature(num);
 }
 
 
@@ -147,6 +148,7 @@ function addItem(ID) {
 	li.appendChild(butt);
 	li.setAttribute('id', ID);
 	a.appendChild(li);
+	updateFeature(ID,10);
 }
 /*
 function addItem() {
